@@ -12,4 +12,5 @@ path('artists/<int:pk>/update',views.ArtistUpdate.as_view(), name="artist_update
 path('artists/<int:pk>/delete', views.ArtistDelete.as_view(), name="artist_delete"),
 path('artists/<int:pk>/artworks/new/', views.ArtworksCreate.as_view(), name="artworks_create"),
 path('artgallerys/<int:pk>/artworks/<int:artworks_pk>/', views.ArtgalleryArtworksAssoc.as_view(), name="artgallery_artworks_assoc"),
+path('accounts/signup/', views.Signup.as_view(), name="signup"),
 ]

@@ -12,12 +12,10 @@
                 <div class="artwork">
                     <span><b>{{artworks.title}}</b></span>
                     <span>{{artworks.get_length}}</span>
+                    <span>{{artworks.image}}</span>
                     <span>
-                        <!--   Here we are creating an anchor
-                        tag that when clicked will hit our new
-                        route and send a query to remove the song     -->
                         <a href="{% url 'artgallery_artworks_assoc' artgallery.pk artworks.pk %}?assoc=remove" class="button is-danger is-outlined">
-                        <span class="icon is-small">
+                        <span class="icon is-small">X
                             <i class="fas fa-times"></i>
                         </span>
                         </a>

@@ -9,13 +9,12 @@
     <span class="icon has-text-info">
       <i class="fas fa-check-circle"></i>
     </span>
-    <span>Verified</span>
+    <span>Verified Cat</span>
   </div>
   {% endif %}
   <h1 class="title">{{artist.name}}</h1>
 </div>
     <div class="detail__container">
-        <!-- inside container -->
     <div class="detail__artworks mb-5">
 
         <h3 class="title is-3">Artworks</h3>
@@ -23,6 +22,7 @@
         <div class="artwork">
         <span>{{forloop.counter}}</span>
         <span><b>{{artworks.title}}</b></span>
+        <span>{{artworks.image}}</span>
         <span>{{artworks.get_length}}</span>
         </div>
         <span>
@@ -42,8 +42,6 @@
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
                 {% for artgallery in artgallerys %}
-            <!-- each playlist becomes a drop
-            down item with the ids needed to add to the join table  -->
                 <a
                   href="{% url 'artgallery_artworks_assoc' artgallery.pk artworks.pk %}?assoc=add"
                   class="dropdown-item"
@@ -65,10 +63,6 @@
 
         {% endfor %}
     </div>
-    <!-- inside detail songs element below the header -->
-
-<!-- Here you can see the action we provided
-     is to the song_create route with the artist pk -->
     <form class="mb-5" action="{% url 'artworks_create' artist.pk %}" method="post">
         {% csrf_token %}
         <div class="field has-addons">
@@ -86,26 +80,31 @@
             class="input"
             type="number"
             name="length"
-            placeholder="Length in Inches"
+            placeholder="Date of Artwork /YY"
             min="1"
             required
             />
+            <div class="control">
+             <input
+             class="input"
+             type="text"
+             name="image"
+             placeholder="Add Image"
+             required
+             />
+            </div>
         </div>
         <div class="control">
             <input class="button is-primary" type="submit" value="Add Artwork" />
         </div>
         </div>
     </form>
-
-<!-- before the for loop for songs -->
-
-    <!--  above about section  -->
-    <a href="{% url 'artist_update' artist.pk %}" class="button is-info">
+    <a href="{% url 'artist_update' artist.pk %}" class="button is-info">Edit
         <span class="icon">
           <i class="fas fa-edit"></i>
         </span>
       </a>
-    <a href="{% url 'artist_delete' artist.pk %}" class="button is-danger">
+    <a href="{% url 'artist_delete' artist.pk %}" class="button is-danger">Remove
       <span class="icon">
         <i class="fas fa-trash-alt"></i>
       </span>

@@ -14,6 +14,7 @@ from pathlib import Path
 
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -114,7 +115,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+STATIC_URL = 'static/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
@@ -125,3 +126,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'main_app/static')]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/artists/'
+
+LOGOUT_REDIRECT_URL = '/'
+
