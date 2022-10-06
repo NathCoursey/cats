@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="home__artgallery">
+    {% for artgallery in artgallerys %}
+
+    <div class="playlist mb-5">
+        <h3 class="title is-3 has-text-success">{{artgallery.title}}</h3>
+        <hr />
+
+        {% for artworks in artgallery.artworks.all %}
+
+                <div class="artwork">
+                    <span><b>{{artworks.title}}</b></span>
+                    <span>{{artworks.get_length}}</span>
+                    <span>
+                        <!--   Here we are creating an anchor
+                        tag that when clicked will hit our new
+                        route and send a query to remove the song     -->
+                        <a href="{% url 'artgallery_artworks_assoc' artgallery.pk artworks.pk %}?assoc=remove" class="button is-danger is-outlined">
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                        </a>
+                    </span>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% empty %} 
+        <div class="playlist mb-5">"There are no artworks in this Art Gallery"</div>
+    {% endfor %}
+</div>
+{% endblock %}
